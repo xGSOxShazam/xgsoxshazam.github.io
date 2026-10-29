@@ -2,9 +2,46 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f9c9df"><title>Stronger Knees ♡ Workout Tracker</title>
 <style>
 :root{font-family:system-ui,-apple-system,sans-serif;color:#72344f;background:#fff3f8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 5%,#ffe0ef,transparent 40%),#fff3f8}main{max-width:850px;margin:auto;padding:18px}header{text-align:center;padding:28px 12px;background:linear-gradient(125deg,#ffd3e7,#fff5fa,#fce0ed);border-bottom:3px solid #ef9fc0}h1{font-family:Georgia,serif;font-size:clamp(29px,6vw,48px);margin:6px 0;color:#c63879}h2{margin:0 0 14px;color:#bf3c78;font-size:20px}.subtitle{letter-spacing:1px;font-size:12px}.card{background:#fff;border:1px solid #f5b7d1;border-radius:20px;padding:20px;margin:15px 0;box-shadow:0 6px 18px #d44e7e12}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.exercise{border:1px solid #f4c0d5;border-radius:17px;padding:16px;background:linear-gradient(#fff,#fff9fc)}.exercise.done{background:#ffeaf3;border-color:#e874a4}.exercise h3{margin:0 0 8px;color:#ad2c6a}.exercise p{font-size:13px;line-height:1.5;min-height:38px}.stamp{font-size:12px;color:#8a5870;min-height:20px;margin-top:8px}button{border:0;background:#ed5794;color:white;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}button:disabled{opacity:.5}button.secondary{background:#f9d7e6;color:#9a2e62}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #ac3c83;outline-offset:2px}input,textarea{width:100%;border:1px solid #eab4cc;border-radius:10px;padding:11px;background:#fff;color:#72344f;font:inherit}label{display:block;margin:10px 0 5px;font-size:14px;font-weight:600}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.progress{height:14px;background:#ffe0ec;border-radius:10px;overflow:hidden}.bar{height:100%;background:#df4d8b;width:0;transition:width .2s}.muted{font-size:13px;color:#875b70}.note{font-size:12px;line-height:1.5}#status{font-weight:700;min-height:24px}ul{padding-left:20px}li{margin:9px 0}footer{text-align:center;padding:20px;font-size:12px}.small{font-size:12px}.extras{margin-top:10px} .extras input{max-width:150px} 
-</style></head><body>
+</style><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Great+Vibes&display=swap');
+:root{font-family:'DM Sans',sans-serif!important;color:#743653!important;background:#fff1f7!important}
+body{background:radial-gradient(ellipse at top left,#ffd2e5 0,transparent 45%),radial-gradient(ellipse at bottom right,#ffe0ed 0,transparent 45%),#fff5fa!important}
+header{position:relative;overflow:hidden;max-width:1200px;margin:12px auto 0;border:2px solid #f49dc0!important;border-radius:25px!important;padding:26px 15px 30px!important;background:linear-gradient(110deg,#ffd3e5,#fff5f9 52%,#ffd0e3)!important;box-shadow:0 10px 35px #b92d7122}
+header:before,header:after{content:'🌸 🎀 🌷';position:absolute;font-size:35px;top:13px;opacity:.9}header:before{left:14px}header:after{right:14px}
+header h1{font-family:'Great Vibes',cursive!important;font-size:clamp(49px,9vw,85px)!important;line-height:1.15;margin:10px 0 0!important;text-shadow:1px 2px #fff;color:#c62969!important}
+header .subtitle{font-size:12px!important;font-weight:800;color:#b43b74;letter-spacing:3px!important}
+header p{font-family:'Great Vibes',cursive;font-size:27px;margin:12px 0 0;color:#bf3e77}
+main{max-width:1200px!important;padding:14px!important}
+.card{position:relative;border:2px solid #f6bbd2!important;border-radius:24px!important;padding:22px!important;background:linear-gradient(145deg,#fff,#fff9fc)!important;box-shadow:0 8px 25px #d34c8520!important;margin:14px 0!important}
+.card:before{content:'✿';position:absolute;right:16px;top:10px;color:#f5acc8;font-size:27px}
+.card h2{font-family:'Great Vibes',cursive;font-size:36px!important;font-weight:400;color:#bb2f70!important;padding-right:24px}
+.grid{grid-template-columns:repeat(auto-fit,minmax(195px,1fr))!important;gap:12px!important}
+.exercise{position:relative;text-align:center;min-height:232px;border:2px solid #f4c1d6!important;border-radius:18px!important;background:linear-gradient(#fff,#fff3f9)!important;padding:20px 13px!important;display:flex;flex-direction:column;align-items:center;box-shadow:0 5px 12px #ce5c8e14}
+.exercise:before{content:'🎀';font-size:26px;display:block;margin-bottom:7px}
+.exercise:nth-child(1):before{content:'🚲';font-size:42px}
+.exercise:nth-child(2):before{content:'🎗️';font-size:42px}
+.exercise:nth-child(3):before{content:'🌸';font-size:42px}
+.exercise:nth-child(4):before{content:'🏐';font-size:42px}
+.exercise:nth-child(5):before{content:'🥎';font-size:42px}
+.exercise h3{font-family:Georgia,serif;color:#b52c6b!important;font-size:18px;min-height:42px}
+.exercise p{font-size:13px;line-height:1.5;min-height:55px}
+.exercise button{margin-top:auto;width:100%}
+.exercise.done{background:linear-gradient(#ffe4f0,#fff6fa)!important;border-color:#e85c98!important}
+button{background:linear-gradient(115deg,#f579ac,#e83e83)!important;box-shadow:0 3px 8px #d84e8726;border-radius:12px!important;min-height:44px}
+button.secondary{background:#ffe3ef!important;color:#a52e68!important}
+.stamp{font-weight:600;margin-top:12px!important}
+.progress{height:18px!important;background:#fbe0eb!important}
+.bar{background:linear-gradient(90deg,#f59ec2,#e93f85)!important}
+input,textarea{border:2px solid #f2c5d8!important;background:#fffafd!important}
+label{color:#ad3e74}
+#history li{background:#fff1f7;border-radius:12px;padding:12px;margin:8px 0;border:1px solid #f5c6d9}
+#history{list-style:'♡  '}
+footer{font-family:Georgia,serif;color:#b8477e;font-size:14px!important}
+@media(min-width:800px){main{display:grid;grid-template-columns:1fr 1fr;gap:14px}main>.card{margin:0!important}main>.card:nth-child(2){grid-column:1/-1}main>.card:nth-child(3){grid-column:1/-1}main>.card:nth-child(4),main>.card:nth-child(5){grid-column:auto}}
+@media(max-width:650px){header:before,header:after{font-size:20px;top:5px}header:before{left:5px}header:after{right:5px}.card{padding:16px!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.exercise{padding:13px 8px!important}.exercise h3{font-size:15px}.exercise p{font-size:12px}.exercise button{font-size:12px;padding:10px 6px}}
+</style><style>.pretty-nav{max-width:1200px;margin:10px auto 0;display:flex;justify-content:center;gap:0;background:#ffe0ed;border:1px solid #f6a6c8;border-radius:15px;overflow:hidden}.pretty-nav a{flex:1;text-align:center;padding:14px 6px;text-decoration:none;color:#ad346d;font-weight:800;font-size:13px}.pretty-nav a:first-child{background:#e94e8b;color:white}.pretty-nav a:hover{background:#f8b5d1;color:#82234e}</style></head><body>
 <header><div style="font-size:32px">🎀 🌸 🏐 🥎 🌷 🎀</div><h1>Stronger Knees ♡</h1><div class="subtitle">BRIGHTER DAYS · BACK TO THE GAME</div><p>Small steps, big comebacks! 💗</p></header>
-<main>
+<nav class="pretty-nav"><a href="#day">♡ Today</a><a href="#exercises">🎀 Exercises</a><a href="#history">🌸 History</a></nav><main>
 <section class="card"><div class="row"><div><label for="day">Workout date</label><input type="date" id="day"></div><div><label for="pain">Knee pain today (0–10)</label><input id="pain" type="number" min="0" max="10" placeholder="Optional"></div></div><p id="count" aria-live="polite">0 of 5 completed</p><div class="progress"><div class="bar" id="bar"></div></div></section>
 <section class="card"><h2>🌸 Today's exercises</h2><p class="muted">Tap Complete when you finish. Each tap records the actual time. Tap Undo to remove a checkoff.</p><div class="grid" id="exercises"></div></section>
 <section class="card"><h2>💌 Save today's workout</h2><label for="notes">How did your knees feel?</label><textarea id="notes" rows="3" placeholder="Any soreness, improvements, or questions?"></textarea><p class="note">Workout data stays on this browser until you press Save & Email. Saving sends the workout date, exercise completion times, pain score and notes to a third-party email service (FormSubmit) for delivery to your parent at Abertt24@gmail.com. Do not enter private medical details. First use requires the recipient to confirm a verification email. Email delivery is not guaranteed until activation.</p><button id="save">💗 Save & Email Workout</button> <button id="local" class="secondary">Save on this device only</button><p id="status" role="status" aria-live="polite"></p></section>
