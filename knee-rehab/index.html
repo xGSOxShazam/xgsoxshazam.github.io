@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f9c9df"><title>Stronger Knees ♡ Workout Tracker</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#72344f;background:#fff3f8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 5%,#ffe0ef,transparent 40%),#fff3f8}main{max-width:850px;margin:auto;padding:18px}header{text-align:center;padding:28px 12px;background:linear-gradient(125deg,#ffd3e7,#fff5fa,#fce0ed);border-bottom:3px solid #ef9fc0}h1{font-family:Georgia,serif;font-size:clamp(29px,6vw,48px);margin:6px 0;color:#c63879}h2{margin:0 0 14px;color:#bf3c78;font-size:20px}.subtitle{letter-spacing:1px;font-size:12px}.card{background:#fff;border:1px solid #f5b7d1;border-radius:20px;padding:20px;margin:15px 0;box-shadow:0 6px 18px #d44e7e12}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.exercise{border:1px solid #f4c0d5;border-radius:17px;padding:16px;background:linear-gradient(#fff,#fff9fc)}.exercise.done{background:#ffeaf3;border-color:#e874a4}.exercise h3{margin:0 0 8px;color:#ad2c6a}.exercise p{font-size:13px;line-height:1.5;min-height:38px}.stamp{font-size:12px;color:#8a5870;min-height:20px;margin-top:8px}button{border:0;background:#ed5794;color:white;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}button:disabled{opacity:.5}button.secondary{background:#f9d7e6;color:#9a2e62}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #ac3c83;outline-offset:2px}input,textarea{width:100%;border:1px solid #eab4cc;border-radius:10px;padding:11px;background:#fff;color:#72344f;font:inherit}label{display:block;margin:10px 0 5px;font-size:14px;font-weight:600}.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.progress{height:14px;background:#ffe0ec;border-radius:10px;overflow:hidden}.bar{height:100%;background:#df4d8b;width:0;transition:width .2s}.muted{font-size:13px;color:#875b70}.note{font-size:12px;line-height:1.5}#status{font-weight:700;min-height:24px}ul{padding-left:20px}li{margin:9px 0}footer{text-align:center;padding:20px;font-size:12px}.small{font-size:12px}.extras{margin-top:10px} .extras input{max-width:150px} 
+</style></head><body>
+<header><div style="font-size:32px">🎀 🌸 🏐 🥎 🌷 🎀</div><h1>Stronger Knees ♡</h1><div class="subtitle">BRIGHTER DAYS · BACK TO THE GAME</div><p>Small steps, big comebacks! 💗</p></header>
+<main>
+<section class="card"><div class="row"><div><label for="day">Workout date</label><input type="date" id="day"></div><div><label for="pain">Knee pain today (0–10)</label><input id="pain" type="number" min="0" max="10" placeholder="Optional"></div></div><p id="count" aria-live="polite">0 of 5 completed</p><div class="progress"><div class="bar" id="bar"></div></div></section>
+<section class="card"><h2>🌸 Today's exercises</h2><p class="muted">Tap Complete when you finish. Each tap records the actual time. Tap Undo to remove a checkoff.</p><div class="grid" id="exercises"></div></section>
+<section class="card"><h2>💌 Save today's workout</h2><label for="notes">How did your knees feel?</label><textarea id="notes" rows="3" placeholder="Any soreness, improvements, or questions?"></textarea><p class="note">Workout data stays on this browser until you press Save & Email. Saving sends the workout date, exercise completion times, pain score and notes to a third-party email service (FormSubmit) for delivery to your parent at Abertt24@gmail.com. Do not enter private medical details. First use requires the recipient to confirm a verification email. Email delivery is not guaranteed until activation.</p><button id="save">💗 Save & Email Workout</button> <button id="local" class="secondary">Save on this device only</button><p id="status" role="status" aria-live="polite"></p></section>
+<section class="card"><h2>🎀 Recent workouts</h2><ul id="history"></ul><p class="muted">Saved only in this browser. Switching devices or clearing browser data may erase this history.</p></section>
+<section class="card"><h2>🌷 A gentle reminder</h2><p class="muted">Start with low bike resistance and manageable exercise sets. Stop if pain becomes sharp, swelling develops or the kneecap feels unstable. A physical therapist can tailor the program.</p></section>
+</main><footer>🏐 Stronger every day · 🥎 One step at a time · 🎀</footer>
+<script>
+const plans=[
+['🚲 Exercise Bike','10–15 minutes, low resistance'],
+['🎀 Banded Side Steps','2 sets of 10 steps each direction'],
+['🌷 Glute Bridges','2 sets of 12'],
+['🌸 Controlled Step-Downs','2 sets of 8 per leg, low step'],
+['🥎 Sit-to-Stand Squats','2 sets of 10, knees over toes']
+];
+const $=id=>document.getElementById(id), key='pink-knee-rehab-v1';
+let records={};try{records=JSON.parse(localStorage.getItem(key)||'{}')}catch{}
+const today=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+$('day').value=today();
+function current(){return records[$('day').value]||{times:{},pain:'',notes:''}}
+function persist(){localStorage.setItem(key,JSON.stringify(records))}
+function updateRecord(){let r=current();r.pain=$('pain').value;r.notes=$('notes').value;records[$('day').value]=r;persist()}
+function render(){let r=current();$('pain').value=r.pain??'';$('notes').value=r.notes??'';let n=0;$('exercises').replaceChildren();
+plans.forEach(([name,detail],i)=>{let t=r.times?.[i];if(t)n++;let el=document.createElement('div');el.className='exercise'+(t?' done':'');let title=document.createElement('h3');title.textContent=name;let p=document.createElement('p');p.textContent=detail;let btn=document.createElement('button');btn.textContent=t?'✓ Completed · Undo':'🎀 Mark Complete';btn.className=t?'secondary':'';btn.onclick=()=>{updateRecord();let a=current();a.times=a.times||{};if(a.times[i])delete a.times[i];else a.times[i]=new Date().toISOString();records[$('day').value]=a;persist();render()};let stamp=document.createElement('div');stamp.className='stamp';stamp.textContent=t?'Completed '+new Date(t).toLocaleString():'Not completed';el.append(title,p,btn,stamp);$('exercises').append(el)});
+$('count').textContent=n+' of '+plans.length+' completed';$('bar').style.width=(n/plans.length*100)+'%';$('history').replaceChildren();Object.entries(records).filter(([d,r])=>r.savedAt).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,12).forEach(([d,r])=>{let li=document.createElement('li');li.textContent=d+' · '+Object.keys(r.times||{}).length+'/'+plans.length+' completed'+(r.pain!==''?' · Pain '+r.pain+'/10':'');$('history').append(li)});if(!$('history').children.length)$('history').textContent='No saved workouts yet 💗'}
+$('day').addEventListener('change',render);
+$('pain').addEventListener('change',updateRecord);$('notes').addEventListener('change',updateRecord);
+$('local').onclick=()=>{updateRecord();let r=current();r.savedAt=new Date().toISOString();records[$('day').value]=r;persist();render();$('status').textContent='Saved on this device 💗'};
+$('save').onclick=async()=>{updateRecord();const date=$('day').value,r=current(),btn=$('save');btn.disabled=true;$('status').textContent='Sending report…';
+const summary=plans.map(([name],i)=>name+': '+(r.times?.[i]?new Date(r.times[i]).toLocaleString():'Not completed')).join('\n');
+const payload={_subject:'Knee Rehab Workout · '+date,_captcha:'false',workout_date:date,completion_times:summary,pain_score:r.pain===''?'Not provided':r.pain+'/10',notes:r.notes||'None',saved_at:new Date().toLocaleString()};
+try{const response=await fetch('https://formsubmit.co/ajax/Abertt24@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});const data=await response.json();if(!response.ok||data.success===false||data.success==='false')throw Error(data.message||'Service did not accept the report');r.savedAt=new Date().toISOString();records[date]=r;persist();render();$('status').textContent='Workout saved! Report submitted. Check recipient email verification if this is the first time.'}
+catch(err){$('status').textContent='Email was not confirmed: '+err.message+'. Your checkoffs remain on this device; try again or use Save on this device only.'}
+finally{btn.disabled=false}};
+render();
+</script></body></html>
